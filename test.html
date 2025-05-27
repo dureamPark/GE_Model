@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Gemini AI 질문</title>
+</head>
+<body>
+  <h1>Gemini AI에게 질문하기</h1>
+  <textarea id="question" placeholder="질문을 입력하세요" rows="4" cols="50"></textarea><br>
+  <button onclick="ask()">질문 보내기</button>
+  <h2>답변:</h2>
+  <div id="answer"></div>
+
+  <script>
+    async function ask() {
+      const question = document.getElementById('question').value;
+      const response = await fetch('http://localhost:3000/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question })
+      });
+      const data = await response.json();
+      document.getElementById('answer').innerText = data.answer || '오류 발생';
+    }
+  </script>
+</body>
+</html>
