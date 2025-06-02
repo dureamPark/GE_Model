@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Gemini AI 질문</title>
+  <title>AI 이중 질문기</title>
 </head>
 <body>
-  <h1>Gemini AI에게 질문하기</h1>
-  <textarea id="question" placeholder="질문을 입력하세요" rows="4" cols="50"></textarea><br>
-  <button onclick="ask()">질문 보내기</button>
+  <h1>AI에게 질문하기</h1>
+
+  <textarea id="prompt" rows="5" cols="60" placeholder="프롬프트를 입력하세요..."></textarea><br><br>
+
+  <button onclick="askChatGPT()">ChatGPT로 질문</button>
+  <button onclick="askGemini()">Gemini로 질문</button>
+
   <h2>답변:</h2>
-  <div id="answer"></div>
+  <div id="response" style="white-space: pre-wrap; border: 1px solid #ccc; padding: 10px;"></div>
 
   <script>
-    async function ask() {
-      const question = document.getElementById('question').value;
-      const response = await fetch('http://localhost:3000/ask', {
+    async function askChatGPT() {
+      const prompt = document.getElementById("prompt").value;
+      const responseDiv = document.getElementById("response");
+
+      const res = await fetch('http://localhost:3001/chatgpt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question })
+        body: JSON.stringify({ prompt })
       });
-      const data = await response.json();
-      document.getElementById('answer').innerText = data.answer || '오류 발생';
+
+      const data = await res.json();
+      responseDiv.innerText = data.answer || 'ChatGPT 응답 실패';
+    }
+
+    async function askGemini() {
+      const prompt = document.getElementById("prompt").value;
+      const responseDiv = document.getElementById("response");
+
+      const res = await fetch('http://localhost:3000/gemini', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      });
+
+      const data = await res.json();
+      responseDiv.innerText = data.answer || 'Gemini 응답 실패';
     }
   </script>
 </body>
