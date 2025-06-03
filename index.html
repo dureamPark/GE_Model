@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>AI 듀얼 챗봇</title>
+  <title>GE_MODEL</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -109,13 +109,13 @@
 </head>
 <body>
   <div class="container">
-    <h1>AI에게 질문하기</h1>
+    <h1>AI에게 게임 평가 시키기</h1>
 
     <div class="input-section">
-      <textarea id="prompt" placeholder="프롬프트를 입력하세요..."></textarea>
+      <textarea id="prompt" placeholder="게임 제목과 어떤 평가 모델로 평가를 할지 입력해주세요."></textarea>
       <div class="btns">
-        <button class="gpt-btn" onclick="askChatGPT()">ChatGPT로 질문</button>
-        <button class="gemini-btn" onclick="askGemini()">Gemini로 질문</button>
+        <button class="gpt-btn" onclick="askChatGPT()">ChatGPT의 평가</button>
+        <button class="gemini-btn" onclick="askGemini()">Gemini의 평가</button>
       </div>
     </div>
 
