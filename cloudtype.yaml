@@ -1,0 +1,13 @@
+name: ge-model
+app: nodejs@18
+
+options:
+  env:
+    - name: OPENAI_API_KEY
+      value: ${OPENAI_API_KEY}
+    - name: GEMINI_API_KEY
+      value: ${GEMINI_API_KEY}
+  ports: 3000
+  install: npm install
+  start: npm start
+  root: ./

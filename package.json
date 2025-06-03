@@ -1,17 +1,23 @@
 {
   "name": "ge_model",
   "version": "1.0.0",
-  "description": "GameEvaluation model project.",
-  "main": "index.js",
+  "description": "GameEvaluation model project with GPT and Gemini AI integration.",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dureamPark/GE_Model.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "gpt",
+    "gemini",
+    "ai",
+    "chatbot"
+  ],
+  "author": "dureamPark",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dureamPark/GE_Model/issues"
